@@ -21,8 +21,8 @@ describe Vines::Storage::Redis do
         {'name' => 'Contact1', 'groups' => %w[Group1 Group2]}.to_json,
         'contact2@wonderland.lit',
         {'name' => 'Contact2', 'groups' => %w[Group3 Group4]}.to_json)
-      db.set('vcard:full@wonderland.lit', {'card' => VCARD.to_xml}.to_json)
-      db.hset('fragments:full@wonderland.lit', FRAGMENT_ID, {'xml' => FRAGMENT.to_xml}.to_json)
+      db.set('vcard:full@wonderland.lit', {'card' => vcard.to_xml}.to_json)
+      db.hset('fragments:full@wonderland.lit', fragment_id, {'xml' => fragment.to_xml}.to_json)
     end
   end
 
@@ -32,7 +32,7 @@ describe Vines::Storage::Redis do
 
   def storage
     storage = Vines::Storage::Redis.new { host 'localhost'; port 6397 }
-    def storage.redis; RedisTest::MOCK_REDIS; end
+    def storage.redis; MOCK_REDIS; end
     storage
   end
 
