@@ -19,6 +19,20 @@ Vines requires Ruby 1.9.3 or better. Instructions for installing the
 needed OS packages, as well as Ruby itself, are available at
 [getvines.org/ruby](http://www.getvines.org/ruby).
 
+## Configuration
+
+Add the following configuration block to a virtual host definition in
+the server's `conf/config.rb` file.
+
+```ruby
+storage 'redis' do
+  host 'localhost'
+  port 6379
+  database 0
+  password ''
+end
+```
+
 ## Development
 
 ```
